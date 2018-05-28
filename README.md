@@ -8,7 +8,7 @@ Daniel Cabaceira - 19510
 
 Atualização do GreenT através da implementação de ROS num RaspberryPi e da integração de uma Kinect.
 
-![GreenTROS](Docs/Fotos/greenT.jpg)
+![GreenTROS](https://github.com/carlossilva2/GreenT/blob/master/Docs/Fotos/greenT.jpg)
 
 ## Indice
 1. [Instalação](#instalação)
@@ -85,4 +85,4 @@ roslaunch <nome pkg> demo_proj.launch
 
 ## Arquitetura
 
-![ROS Nodes](Docs/GreenT_Kinect.png)
+![ROS Nodes](https://github.com/carlossilva2/GreenT/blob/master/Docs/GreenT_Kinect.png)
