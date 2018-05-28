@@ -1,0 +1,42 @@
+<launch>
+   <!--change this next line to include the launch file for your robot's hardware drivers: 
+  <include file="$(find knex_ros)/launch/knex_arduino_ser.launch" />-->
+
+  <rosparam param="ticks_meter">2556</rosparam>
+
+  <node pkg="demo_proj" type="greenT_pid_vel.py" name="greenT_pid_vel_r">
+      <remap from="wheel" to="RwheelEnc"/>
+      <remap from="motor_cmd" to="cmd_vel1"/>
+      <remap from="wheel_vtarget" to="rwheel_vtarget"/>
+      <remap from="wheel_vel" to="rwheel_vel"/>
+      <rosparam param="Kp">0.5</rosparam>
+      <rosparam param="Ki">0.35</rosparam>
+      <rosparam param="Kd">1</rosparam>
+      <rosparam param="out_min">-204</rosparam>
+      <rosparam param="out_max">204</rosparam>
+      <rosparam param="rate">30</rosparam>
+      <rosparam param="timeout_ticks">10</rosparam>
+      <rosparam param="rolling_pts">5</rosparam>
+  </node>
+  <node pkg="demo_proj" type="greenT_pid_vel.py" name="greenT_pid_vel_l">
+      <remap from="wheel" to="LwheelEnc"/>
+      <remap from="motor_cmd" to="cmd_vel"/>
+      <remap from="wheel_vtarget" to="lwheel_vtarget"/>
+      <remap from="wheel_vel" to="lwheel_vel"/>
+      <rosparam param="Kp">0.5</rosparam>
+      <rosparam param="Ki">0.35</rosparam>
+      <rosparam param="Kd">1</rosparam>
+      <rosparam param="out_min">-204</rosparam>
+      <rosparam param="out_max">204</rosparam>
+      <rosparam param="rate">30</rosparam>
+      <rosparam param="timeout_ticks">10</rosparam>
+      <rosparam param="rolling_pts">5</rosparam>
+  </node>
+
+  <node pkg="demo_proj" type="greenT_joy.py" name="virtual_joystick" output="screen"/>
+  <node pkg="demo_proj" type="greenT_tf.py" name="TF"/>
+  <node pkg="demo_proj" type="greenT_teleop.py" name="twist_to_motors" output="screen">
+    <rosparam param="base_width">0.23</rosparam>
+  </node>
+
+</launch>
